@@ -6,4 +6,6 @@ COPY . .
 RUN npm run build
 
 FROM nginx
+#for elastikbeanstolk of AWS
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
