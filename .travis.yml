@@ -1,0 +1,9 @@
+sudo: required #when we use docker we require sudo
+services:
+    - docker #travis installs a copy of docker inside our container
+
+before_install: #executed before our test are ran or deploy
+    - docker build -t elvo/docker-react -f Dockerfile.dev . #will give us back the image id
+
+script: 
+    - docker run elvo/docker-react npm run test -- --coverage #without -- --coverage test will wait for us to input something
